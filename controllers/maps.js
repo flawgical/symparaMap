@@ -3,7 +3,8 @@ const Map = require('../models/map');
 module.exports = {
     index,
     create,
-    show
+    show,
+    update
 }
 
 function index(req, res) {
@@ -30,6 +31,16 @@ function show(req, res) {
     Map.findById(req.params.id)
         .then((map) => {
             res.status(200).json(map)
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+        })
+}
+
+function update(req, res) {
+    Map.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        .then((map) => {
+            res.status(200).json(map);
         })
         .catch((err) => {
             res.status(500).json(err);

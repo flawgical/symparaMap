@@ -7,4 +7,6 @@ router.get('/maps', mapsCtrl.index);
 router.post('/maps', mapsCtrl.create);
 router.get('/maps/:id', mapsCtrl.show);
 
+router.put('/maps/:id', mapsCtrl.update);
+
 module.exports = router;
