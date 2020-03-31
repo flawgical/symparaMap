@@ -4,7 +4,8 @@ module.exports = {
     index,
     create,
     show,
-    update
+    update,
+    delete: deleteOne,
 }
 
 function index(req, res) {
@@ -39,6 +40,16 @@ function show(req, res) {
 
 function update(req, res) {
     Map.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        .then((map) => {
+            res.status(200).json(map);
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+        })
+}
+
+function deleteOne(req, res) {
+    Map.findByIdAndRemove(req.params.id)
         .then((map) => {
             res.status(200).json(map);
         })
