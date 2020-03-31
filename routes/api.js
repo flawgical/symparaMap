@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
+const mapsCtrl = require('../controllers/maps');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+/* GET maps listing. */
+router.get('/maps', mapsCtrl.index);
+router.post('/maps', mapsCtrl.create);
+router.get('/maps/:id', mapsCtrl.show);
 
 module.exports = router;
