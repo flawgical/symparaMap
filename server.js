@@ -5,6 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const methodOverride = require('method-override');
 
+// connect to the database with Mongoose
+require('./config/database');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
